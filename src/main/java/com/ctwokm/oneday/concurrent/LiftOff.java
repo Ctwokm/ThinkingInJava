@@ -22,6 +22,7 @@ public class LiftOff implements Runnable {
 	public void run() {
 		while (countDown-- > 0) {
 			System.out.print(status());
+			// Thread.yield()方法调用的是对线程调度器的一种建议，表示我已经执行完最重要的部分，现在是执行其他任务的最佳时机
 			Thread.yield();
 		}
 	}

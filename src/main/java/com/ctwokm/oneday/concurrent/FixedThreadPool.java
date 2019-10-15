@@ -1,14 +1,12 @@
 package com.ctwokm.oneday.concurrent;
 
-//: concurrency/CachedThreadPool.java
+//: concurrency/FixedThreadPool.java
 import java.util.concurrent.*;
 
-public class CachedThreadPool {
+public class FixedThreadPool {
 	public static void main(String[] args) {
-		// ExecutorService知道如何恰当的创建上下文来执行Runnable对象
-		// ExecutorService对象是使用静态的Executor方法创建的，这个方法可以确定其Executor类型
-		ExecutorService exec = Executors.newCachedThreadPool();
-		// 使用CachedThreadPool为每个任务创建一个线程
+		// Constructor argument is number of threads:
+		ExecutorService exec = Executors.newFixedThreadPool(5);
 		for (int i = 0; i < 5; i++)
 			exec.execute(new LiftOff());
 		exec.shutdown();
